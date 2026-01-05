@@ -1,0 +1,104 @@
+.tabsContainer {
+    margin-top: 4rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.tabHeader {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 2rem;
+}
+
+.tabButton {
+    background: none;
+    border: none;
+    padding: 1.5rem 0;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    position: relative;
+    transition: color 0.3s;
+}
+
+.tabButton:hover {
+    color: var(--color-primary);
+}
+
+.activeTab {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.activeTab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+}
+
+.tabContent {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ingredientGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.ingredientItem {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.ingredientName {
+    font-weight: bold;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.ingredientOrigin {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.reviewItem {
+    border-bottom: 1px solid #eee;
+    padding: 1.5rem 0;
+}
+
+.reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.stars {
+    color: #eebb00;
+}

@@ -1,0 +1,237 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    gap: 1rem;
+}
+
+.step {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.step.active {
+    color: #4a4a4a;
+    font-weight: 600;
+}
+
+.line {
+    width: 40px;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+}
+
+.form {
+    padding-right: 2rem;
+    border-right: 1px solid #eee;
+}
+
+.stepContent h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.input {
+    width: 100%;
+    padding: 0.9rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #5d8e6a;
+    box-shadow: 0 0 0 1px #5d8e6a;
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.submitButton {
+    background-color: #000;
+    color: white;
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.submitButton:hover {
+    opacity: 0.9;
+}
+
+.submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.backButton {
+    background: none;
+    border: none;
+    color: #5d8e6a;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.backButton:hover {
+    text-decoration: underline;
+}
+
+.summary {
+    background-color: #fafafa;
+    padding: 2rem;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.itemImage {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    background: white;
+    padding: 5px;
+}
+
+.itemImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.quantity {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #777;
+    color: white;
+    font-size: 0.75rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemInfo {
+    flex: 1;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.itemPrice {
+    font-weight: 500;
+}
+
+.totals {
+    margin-top: 2rem;
+    border-top: 1px solid #e1e1e1;
+    padding-top: 1.5rem;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.finalTotal {
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.radioGroup {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+}
+
+.radioOption {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.radioOption:last-child {
+    border-bottom: none;
+}
+
+.radioOption input {
+    margin-right: 1rem;
+}
+
+.radioDetails {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+.paymentBox {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    background: #fdfdfd;
+    padding: 1rem;
+}
+
+@media (max-width: 900px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .form {
+        padding-right: 0;
+        border-right: none;
+        order: 2;
+    }
+
+    .summary {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+}

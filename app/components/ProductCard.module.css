@@ -1,0 +1,68 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-sm);
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: var(--spacing-sm);
+    /* Radial gradient to create a spotlight effect behind the black bottle */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.imageContainer img {
+    object-fit: contain;
+    /* Removed mix-blend-mode which was making dark bottles invisible on dark bg */
+}
+
+.category {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 1px;
+}
+
+.name {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.price {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-sm);
+}
+
+.btn {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.card:hover .btn {
+    opacity: 1;
+    transform: translateY(0);
+}

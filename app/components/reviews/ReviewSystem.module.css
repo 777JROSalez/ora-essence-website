@@ -1,0 +1,181 @@
+/* Existing styles */
+.container {
+    margin-top: 4rem;
+    border-top: 1px solid #333;
+    padding-top: 3rem;
+    color: var(--color-text-main);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.average {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stars {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.reviewList {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.reviewItem {
+    border-bottom: 1px solid #222;
+    padding-bottom: 2rem;
+}
+
+.reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.author {
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.verified {
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+.date {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.reviewTitle {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.reviewContent {
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Video Overlay Styles */
+.videoOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    pointer-events: none;
+    /* Let clicks pass through to video controls if needed, but we might want custom play logic later */
+}
+
+/* Adjust Play Button to be centered or part of the UI */
+.playButton {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.quoteBubble {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border-top-left-radius: 4px;
+    /* Speech bubble effect */
+    color: white;
+    font-style: italic;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    /* Gold hint */
+    max-width: 90%;
+}
+
+.form {
+    background: #111;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 3rem;
+}
+
+.formTitle {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.inputGroup {
+    margin-bottom: 1rem;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #888;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: #222;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+}
+
+.textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.submitBtn {
+    background: var(--color-primary);
+    color: black;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+}
+
+.submitBtn:hover {
+    opacity: 0.9;
+}

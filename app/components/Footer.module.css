@@ -1,0 +1,65 @@
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-top: auto;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.column h3 {
+    color: var(--color-secondary);
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.linkList {
+    list-style: none;
+}
+
+.linkList li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.linkList a {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    transition: color 0.2s;
+}
+
+.linkList a:hover {
+    color: white;
+}
+
+.newsletter {
+    grid-column: span 1;
+}
+
+.inputGroup {
+    display: flex;
+    margin-top: var(--spacing-sm);
+}
+
+.input {
+    padding: 10px;
+    border: none;
+    width: 100%;
+    font-family: var(--font-sans);
+}
+
+.submit {
+    padding: 10px 20px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}

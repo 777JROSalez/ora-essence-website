@@ -1,0 +1,151 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 200;
+    /* Higher than Sidebar or same */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    /* Right side */
+    width: 400px;
+    max-width: 90vw;
+    height: 100vh;
+    background: var(--color-background);
+    z-index: 201;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.drawer.visible {
+    transform: translateX(0);
+}
+
+.header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+}
+
+.closeBtn {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1rem;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    background: #eee;
+    aspect-ratio: 1;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.itemName {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.itemPrice {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border-color);
+    padding: 0.25rem;
+}
+
+.qtyBtn {
+    padding: 0 0.5rem;
+    font-size: 1rem;
+}
+
+.removeBtn {
+    font-size: 0.8rem;
+    text-decoration: underline;
+    color: var(--color-text-muted);
+}
+
+.footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--color-background-white);
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+}
