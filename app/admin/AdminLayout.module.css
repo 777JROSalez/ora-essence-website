@@ -8,7 +8,7 @@
 
 .sidebar {
     width: 260px;
-    background-color: #0F281E;
+    background-color: var(--color-background);
     /* Deep Forest Green */
     border-right: 1px solid rgba(212, 175, 55, 0.2);
     display: flex;
@@ -24,7 +24,7 @@
 
 .brand h2 {
     font-family: var(--font-serif);
-    color: #F5F1E6;
+    color: var(--color-text-main);
     letter-spacing: 1px;
     font-size: 1.5rem;
 }
@@ -84,7 +84,7 @@
     width: 40px;
     height: 40px;
     background: #D4AF37;
-    color: #0F281E;
+    color: var(--color-text-dark);
     border-radius: 50%;
     display: flex;
     align-items: center;

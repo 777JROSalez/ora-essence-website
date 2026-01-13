@@ -12,6 +12,11 @@ interface ProductTabsProps {
 export default function ProductTabs({ product }: ProductTabsProps) {
     const [activeTab, setActiveTab] = useState('overview');
 
+    const tabs = ['Overview', 'How to Use'];
+    if (product.ingredientsImage || (product.ingredients && product.ingredients.length > 0)) {
+        tabs.push('Ingredients');
+    }
+
     const renderContent = () => {
         switch (activeTab) {
             case 'overview':
@@ -45,6 +50,15 @@ export default function ProductTabs({ product }: ProductTabsProps) {
                                 <p style={{ padding: '0.5rem', background: '#222', fontSize: '0.8rem', textAlign: 'center', color: '#888' }}>Watch the Full Ritual</p>
                             </div>
                         )}
+                        {product.howToImage && (
+                            <div className={styles.mediaContainer}>
+                                <img
+                                    src={product.howToImage}
+                                    alt="Ritual Application"
+                                    style={{ width: '100%', display: 'block' }}
+                                />
+                            </div>
+                        )}
                         <div style={{ display: 'grid', gap: '2rem' }}>
                             {product.howToUse.map((step, index) => (
                                 <div key={index}>
@@ -59,7 +73,17 @@ export default function ProductTabs({ product }: ProductTabsProps) {
                 return (
                     <div className={styles.tabContent}>
                         <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>Key Ingredients</h3>
-                        <InteractiveIngredients ingredients={product.ingredients} />
+                        {product.ingredientsImage ? (
+                            <div className={styles.infographicContainer}>
+                                <img
+                                    src={product.ingredientsImage}
+                                    alt="Key Ingredients"
+                                    className={styles.infographicImage}
+                                />
+                            </div>
+                        ) : product.ingredients && product.ingredients.length > 0 ? (
+                            <InteractiveIngredients ingredients={product.ingredients} />
+                        ) : null}
                         <p style={{ marginTop: '2rem', fontSize: '0.8rem', color: '#666' }}>*Full ingredient list available on packaging.</p>
                     </div>
                 );
@@ -71,7 +95,7 @@ export default function ProductTabs({ product }: ProductTabsProps) {
     return (
         <section className={styles.tabsContainer}>
             <div className={styles.tabHeader}>
-                {['Overview', 'How to Use', 'Ingredients'].map((tab) => {
+                {tabs.map((tab) => {
                     const value = tab.toLowerCase().replace(/ /g, '-');
                     return (
                         <button

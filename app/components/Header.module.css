@@ -1,5 +1,6 @@
 .header {
     background-color: var(--color-background-white);
+    /* Keep white for clean contrast or switch to var(--color-background-alt) */
     height: var(--header-height);
     display: flex;
     align-items: center;
@@ -9,13 +10,25 @@
     top: 0;
     z-index: 100;
     border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.logoContainer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
 }
 
 .logo {
     font-family: var(--font-serif);
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--color-primary);
+    /* Gradient Text for Main Logo */
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -28,7 +41,7 @@
 .navLink {
     font-family: var(--font-sans);
     font-size: 0.9rem;
-    color: var(--color-text-main);
+    color: var(--color-text-dark);
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: color 0.2s;
@@ -47,5 +60,5 @@
 .iconBtn {
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: var(--color-text-main);
+    color: var(--color-text-dark);
 }

@@ -33,7 +33,7 @@ export default function CookieConsent() {
             maxWidth: '600px',
             backgroundColor: 'rgba(15, 40, 30, 0.95)', // Forest Green
             backdropFilter: 'blur(12px)',
-            color: '#F5F1E6', // Cream
+            color: 'var(--color-text-main)', // Soft Tint
             padding: '1.5rem',
             borderRadius: '8px',
             boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
@@ -76,7 +76,7 @@ export default function CookieConsent() {
                     style={{
                         padding: '0.5rem 2rem',
                         backgroundColor: '#D4AF37',
-                        color: '#0F281E',
+                        color: 'var(--color-text-dark)',
                         border: 'none',
                         borderRadius: '4px',
                         cursor: 'pointer',

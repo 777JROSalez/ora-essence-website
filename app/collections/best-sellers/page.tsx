@@ -4,22 +4,20 @@ import ProductCard from '../../components/ProductCard';
 import { products } from '../../data/products';
 
 export default function BestSellersPage() {
-    // For now, let's assume all products are "best sellers" or filter a subset
-    // In a real app, you'd filter by sales_count > X
-    const bestSellers = products.slice(0, 4);
+    const bestSellers = products.filter(p => p.bestSeller);
 
     return (
         <main>
             <div style={{
-                backgroundColor: '#f5f5f5',
+                backgroundColor: 'var(--color-background)',
                 padding: '4rem 2rem',
                 textAlign: 'center',
                 marginBottom: '2rem'
             }}>
-                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', color: '#333', marginBottom: '1rem' }}>
+                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', color: 'var(--color-primary)', marginBottom: '1rem' }}>
                     Best Sellers
                 </h1>
-                <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto', color: '#666' }}>
+                <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto', color: 'var(--color-text-main)' }}>
                     Our most-loved formulas, trusted by thousands for radiant, healthy skin.
                 </p>
             </div>

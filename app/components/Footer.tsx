@@ -29,7 +29,7 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className={`${styles.column} ${styles.newsletter}`}>
-                    <h3>Join the Farm Family</h3>
+                    <h3>Join the ORA Community</h3>
                     <p style={{ fontSize: '0.9rem', marginBottom: '1rem', color: '#e0e0e0' }}>
                         Receive exclusive offers and skincare tips.
                     </p>
@@ -46,7 +46,7 @@ export default function Footer() {
                 </div>
             </div>
             <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem 1rem 0', borderTop: '1px solid #222', marginTop: '3rem', display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '0.8rem' }}>
-                <p>&copy; 2025 Jeff Skincare. All rights reserved.</p>
+                <p>&copy; 2025 ORA ESSENCE. All rights reserved.</p>
                 <div>
                     <a href="/pages/privacy-policy" style={{ marginRight: '1rem' }}>Privacy</a>
                     <a href="/pages/terms">Terms</a>

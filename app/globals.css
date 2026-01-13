@@ -1,31 +1,40 @@
 :root {
-  /* Brand Colors - ORA ESSENCE (Botanical Luxury) */
-  --color-primary: #D4AF37;
-  /* Metallic Gold */
-  --color-primary-dark: #B5902B;
-  /* Darker Gold */
-  --color-primary-light: #E5C560;
-  /* Light Gold */
+  /* Brand Colors - ORA ESSENCE (Satin & Silk) */
 
-  --color-secondary: #0F281E;
-  /* Deep Forest Green (Brand Color) */
-  --color-secondary-light: #1A3E30;
-  /* Lighter Forest Green */
+  /* Gold (Champagne to Rich Gold) */
+  --color-primary: #D4C48F;
+  /* Champagne Gold (Text/Base) */
+  --color-primary-dark: #B09B5B;
+  /* Deep Antique Gold */
+  --color-primary-light: #F3EAD3;
+  /* Silk Highlight */
+  --gradient-gold: linear-gradient(135deg, #B09B5B 0%, #D4C48F 50%, #B09B5B 100%);
+  /* Satin Sheen */
 
-  --color-background: #0F281E;
-  /* Deep Green Background */
-  --color-background-alt: #F5F1E6;
-  /* Cream/Canvas for sections */
+  /* Emerald (Deep, Blue-Leaning, Velvety) */
+  --color-secondary: #0B3D32;
+  /* Deep Satin Emerald */
+  --color-secondary-deep: #03241C;
+  /* Midnight Green (Nav/Footer) */
+  --color-secondary-light: #1A5E4F;
+  /* Jewel Tone Highlight */
+  --gradient-emerald: linear-gradient(135deg, #03241C 0%, #0B3D32 50%, #03241C 100%);
+  /* Velvet Sheen */
+
+  --color-background: #03241C;
+  /* Deepest Green */
+  --color-background-alt: #F0F5F3;
+  /* Very Pale Mist (Clean Contrast) */
   --color-background-white: #FFFFFF;
 
-  --color-text-main: #F5F1E6;
-  /* Cream text on Green */
-  --color-text-dark: #0F281E;
-  /* Green text on Cream */
-  --color-text-muted: #A3B5AE;
-  /* Soft Green-Grey */
-  --color-text-light: #F5F1E6;
-  /* Inverse text */
+  --color-text-main: #F3EAD3;
+  /* Silk on Dark */
+  --color-text-dark: #03241C;
+  /* Dark Green on Light */
+  --color-text-muted: #8AA39B;
+  /* Muted Emerald Grey */
+  --color-text-light: #FFFFFF;
+  /* Pure White */
 
   /* Typography */
   --font-serif: 'Playfair Display', serif;
@@ -44,8 +53,8 @@
   --announcement-height: 40px;
 
   /* Borders */
-  --border-color: rgba(212, 175, 55, 0.3);
-  /* Gold Transparent */
+  --border-color: rgba(212, 196, 143, 0.3);
+  /* Champagne Gold Transparent */
   --radius-sm: 4px;
 }
 
@@ -60,9 +69,30 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-color: var(--color-background);
+  /* Fallback */
+  background-image: url('/images/ora_satin_bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
   color: var(--color-text-main);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Darkening overlay for readability */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 36, 28, 0.85);
+  /* 85% opacity Deep Emerald */
+  z-index: -1;
+  pointer-events: none;
 }
 
 a {
@@ -97,19 +127,26 @@ button {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-  /* Dark Text on Gold */
+  background: var(--gradient-gold);
+  /* Satin Gradient */
+  background-size: 200% auto;
+  color: var(--color-secondary-deep);
+  /* Darkest Green Text */
   padding: 12px 24px;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
+  background-position: right center;
+  /* Shimmer effect */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 196, 143, 0.4);
 }
 
 .btn-outline {
@@ -120,6 +157,7 @@ button {
   font-size: 0.9rem;
   letter-spacing: 1px;
   transition: all 0.3s ease;
+  background: transparent;
 }
 
 .btn-outline:hover {

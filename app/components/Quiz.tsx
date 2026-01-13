@@ -1,209 +1,195 @@
 'use client';
 
 import { useState } from 'react';
-import { useCart } from '../context/CartContext';
+import { motion, AnimatePresence } from 'framer-motion';
+import { questions, getRecommendation } from '../quiz/data';
 import { products } from '../data/products';
-import styles from './Quiz.module.css';
+import { useCart } from '../context/CartContext';
 import Link from 'next/link';
 
-interface Question {
-    id: number;
-    text: string;
-    options: string[];
-}
-
-const questions: Question[] = [
-    {
-        id: 1,
-        text: "What's your skin type?",
-        options: ["Dry", "Oily", "Combination", "Sensitive"]
-    },
-    {
-        id: 2,
-        text: "What is your main concern?",
-        options: ["Aging", "Acne", "Dullness", "Dehydration"]
-    },
-    {
-        id: 3,
-        text: "How complex is your current routine?",
-        options: ["None", "Basic", "Advanced"]
-    }
-];
-
 export default function Quiz() {
-    const [currentStep, setCurrentStep] = useState(0);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState<Record<number, string>>({});
     const [showResults, setShowResults] = useState(false);
-    const { addToCart, openCart } = useCart();
+    const [recommendedSlugs, setRecommendedSlugs] = useState<string[]>([]);
+    const [loading, setLoading] = useState(false);
 
-    const handleOptionSelect = (option: string) => {
-        setAnswers({ ...answers, [currentStep]: option });
-    };
+    const currentQuestion = questions[currentQuestionIndex];
+    const progress = ((currentQuestionIndex) / questions.length) * 100;
 
-    const nextStep = () => {
-        if (currentStep < questions.length - 1) {
-            setCurrentStep(currentStep + 1);
+    const handleAnswer = (value: string) => {
+        const newAnswers = { ...answers, [currentQuestion.id]: value };
+        setAnswers(newAnswers);
+
+        if (currentQuestionIndex < questions.length - 1) {
+            setTimeout(() => {
+                setCurrentQuestionIndex(prev => prev + 1);
+            }, 300); // Small delay for visual feedback
         } else {
-            setShowResults(true);
+            setLoading(true);
+            setTimeout(() => {
+                const results = getRecommendation(newAnswers);
+                setRecommendedSlugs(results);
+                setShowResults(true);
+                setLoading(false);
+            }, 1500); // Simulate "analyzing"
         }
     };
 
-    const prevStep = () => {
-        if (currentStep > 0) {
-            setCurrentStep(currentStep - 1);
-        }
+    const { addToCart, openCart } = useCart(); // Import cart context
+
+    const recommendedProducts = products.filter(p => recommendedSlugs.includes(p.slug));
+
+    // Calculate Totals
+    const totalPrice = recommendedProducts.reduce((sum, p) => sum + p.price, 0);
+    const discount = 0.15; // 15% off
+    const discountedPrice = Math.round(totalPrice * (1 - discount));
+    const savings = totalPrice - discountedPrice;
+
+    const handleBundleAdd = () => {
+        recommendedProducts.forEach(product => {
+            // Apply discount to each item for this specific bundle add
+            // Note: This relies on the cart treating these as normal items but we are overriding price slightly
+            // Ideally we would add a 'discount' metadata, but simply adjusting price works for MVP
+            addToCart({ ...product, price: Math.round(product.price * (1 - discount)) });
+        });
+        openCart();
     };
 
-    // Dynamic Regimen Logic
-    const getRegimen = () => {
-        const skinType = answers[0]; // Dry, Oily...
-        const concern = answers[1]; // Aging, Acne...
-
-        // Default Recommendation
-        let recommendedIds = ['1']; // Always start with Cleanser
-
-        if (skinType === 'Dry' || concern === 'Dehydration') {
-            recommendedIds.push('5', '6'); // Face Oil, Essence
-        } else if (skinType === 'Oily' || concern === 'Acne') {
-            recommendedIds.push('2', '6'); // Mask, Essence
-        } else {
-            recommendedIds.push('4', '3'); // Serum, Eye Creme
-        }
-
-        if (concern === 'Aging') {
-            recommendedIds.push('3'); // Eye Creme
-        }
-
-        // De-duplicate
-        recommendedIds = Array.from(new Set(recommendedIds));
-
-        // Get full product objects
-        return products.filter(p => recommendedIds.includes(p.id));
-    };
-
-    const recommendedProducts = showResults ? getRegimen() : [];
-
-    // Calculate Bundle Pricing
-    const totalValue = recommendedProducts.reduce((sum, p) => sum + p.price, 0);
-    const bundlePrice = Math.round(totalValue * 0.85); // 15% off
-
-    const addRegimenToCart = () => {
-        // Create a single bundle item with a unique ID and group image
-        const bundleItem = {
-            id: `ritual-bundle-${Object.values(answers).join('-')}`,
-            name: `Personalized ${answers[0] || 'Skin'} Ritual`,
-            price: bundlePrice,
-            image: '/images/bundle_group_luxury.png',
-            category: 'Bundle',
-            slug: 'personalized-ritual',
-            description: `A complete regimen for your unique skin profile. Includes: ${recommendedProducts.map(p => p.name).join(', ')}.`
-        };
-
-        addToCart(bundleItem);
-        // openCart handled by context
-    };
-
-    if (showResults) {
+    if (loading) {
         return (
-            <div className={styles.container}>
-                <h2 className={styles.question}>Your Personalized Jeff Ritual</h2>
-                <p style={{ marginBottom: '2rem', color: 'var(--color-text-muted)' }}>
-                    Based on your profile (<strong>{answers[0]}</strong> & <strong>{answers[1]}</strong>), we curated this luxury regimen for you:
-                </p>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
-                    {recommendedProducts.map((product) => (
-                        <div key={product.id} style={{
-                            textAlign: 'left',
-                            background: '#111',
-                            padding: '1rem',
-                            borderRadius: '4px',
-                            border: '1px solid #333',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '1rem'
-                        }}>
-                            <img src={product.image} alt={product.name} style={{ width: '50px', height: '50px', objectFit: 'contain' }} />
-                            <div>
-                                <strong style={{ color: 'var(--color-primary)', display: 'block' }}>{product.name}</strong>
-                                <span style={{ color: '#888', fontSize: '0.9rem' }}>${product.price}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <div style={{ borderTop: '1px solid #333', paddingTop: '1rem', marginBottom: '2rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1.2rem', fontWeight: 'bold' }}>
-                        <span style={{ color: 'var(--color-primary)' }}>Total Ritual Value</span>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                            <span style={{ textDecoration: 'line-through', color: '#666', fontSize: '1rem' }}>${totalValue}</span>
-                            <span style={{ color: '#DC143C', fontSize: '1.4rem' }}>${bundlePrice}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <button className="btn-primary" style={{ width: '100%', marginBottom: '1rem' }} onClick={addRegimenToCart}>
-                    Add Full Ritual To Bag (Save 15%)
-                </button>
-
-                <button
-                    style={{ background: 'transparent', border: 'none', color: '#666', textDecoration: 'underline', cursor: 'pointer' }}
-                    onClick={() => {
-                        setShowResults(false);
-                        setCurrentStep(0);
-                        setAnswers({});
-                    }}
+            <div style={{ textAlign: 'center', padding: '4rem' }}>
+                <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    style={{ fontSize: '4rem', marginBottom: '2rem', display: 'inline-block' }}
                 >
-                    Retake Quiz
-                </button>
+                    ✨
+                </motion.div>
+                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--color-primary)' }}>Designing Your Ritual...</h2>
             </div>
         );
     }
 
-    const question = questions[currentStep];
-    const progress = ((currentStep + 1) / questions.length) * 100;
+    if (showResults) {
+        return (
+            <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 2rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', color: 'var(--color-primary)', marginBottom: '1rem' }}>Your Curated Ritual</h2>
+                    <p style={{ fontSize: '1.2rem', color: '#666' }}>Based on your skin profile, we've selected these essentials to restore balance and glow.</p>
+                </div>
 
-    return (
-        <div className={styles.container}>
-            <div className={styles.progress}>
-                Question {currentStep + 1} of {questions.length}
-                <div className={styles.progressBar}>
-                    <div className={styles.progressFill} style={{ width: `${progress}%` }}></div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+                    {recommendedProducts.map((product, index) => (
+                        <motion.div
+                            key={product.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            style={{ background: 'white', padding: '2rem', borderRadius: '8px', textAlign: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}
+                        >
+                            <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: '0.5rem', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>Step {index + 1}</div>
+                            <img src={product.image} alt={product.name} style={{ width: '100%', height: '200px', objectFit: 'contain', marginBottom: '1rem' }} />
+                            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{product.name}</h3>
+                            <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '1rem', height: '40px', overflow: 'hidden' }}>{product.category}</p>
+                            <div style={{ marginBottom: '1rem', fontWeight: 'bold' }}>${product.price}</div>
+                            <Link href={`/products/${product.slug}`} style={{ textDecoration: 'underline', color: 'var(--color-primary)' }}>View Details</Link>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Bundle Offer */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 }}
+                    style={{
+                        background: '#f9f9f9',
+                        padding: '3rem',
+                        borderRadius: '16px',
+                        textAlign: 'center',
+                        border: '1px solid #D4AF37',
+                        position: 'relative',
+                        overflow: 'hidden'
+                    }}
+                >
+                    <div style={{ position: 'absolute', top: '20px', right: '-30px', background: '#D4AF37', color: 'white', padding: '5px 40px', transform: 'rotate(45deg)', fontSize: '0.8rem', fontWeight: 'bold' }}>LIMITED TIME</div>
+
+                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', marginBottom: '0.5rem' }}>Complete Your Ritual</h3>
+                    <p style={{ color: '#666', marginBottom: '2rem' }}>Purchase your personalized routine together and save.</p>
+
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
+                        <div style={{ fontSize: '1.5rem', textDecoration: 'line-through', color: '#999' }}>${totalPrice}</div>
+                        <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--color-primary)' }}>${discountedPrice}</div>
+                    </div>
+
+                    <button
+                        className="btn-primary"
+                        onClick={handleBundleAdd}
+                        style={{ padding: '1.2rem 3rem', fontSize: '1.1rem' }}
+                    >
+                        Add Routine to Bag (Save ${savings})
+                    </button>
+                </motion.div>
+
+                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                    <button className="btn-secondary" onClick={() => window.location.reload()} style={{ background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', color: '#666' }}>Retake Quiz</button>
                 </div>
             </div>
+        );
+    }
 
-            <h2 className={styles.question}>{question.text}</h2>
-
-            <div className={styles.options}>
-                {question.options.map((option) => (
-                    <button
-                        key={option}
-                        className={`${styles.option} ${answers[currentStep] === option ? styles.selected : ''}`}
-                        onClick={() => handleOptionSelect(option)}
-                    >
-                        {option}
-                    </button>
-                ))}
+    return (
+        <div style={{ maxWidth: '600px', margin: '0 auto', background: 'white', padding: '3rem', borderRadius: '16px', boxShadow: '0 20px 60px rgba(0,0,0,0.05)' }}>
+            {/* Progress Bar */}
+            <div style={{ width: '100%', height: '4px', background: '#eee', marginBottom: '3rem', borderRadius: '2px', overflow: 'hidden' }}>
+                <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${progress}%` }}
+                    style={{ height: '100%', background: 'var(--color-primary)' }}
+                />
             </div>
 
-            <div className={styles.actions}>
-                <button
-                    className={styles.btnBack}
-                    onClick={prevStep}
-                    disabled={currentStep === 0}
-                    style={{ visibility: currentStep === 0 ? 'hidden' : 'visible' }}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={currentQuestion.id}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
                 >
-                    Back
-                </button>
-                <button
-                    className={styles.btnNext}
-                    onClick={nextStep}
-                    disabled={!answers[currentStep]}
-                    style={{ opacity: !answers[currentStep] ? 0.5 : 1 }}
-                >
-                    {currentStep === questions.length - 1 ? 'See Results' : 'Next'}
-                </button>
-            </div>
+                    <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--color-primary)', marginBottom: '2.5rem', textAlign: 'center' }}>
+                        {currentQuestion.text}
+                    </h2>
+
+                    <div style={{ display: 'grid', gap: '1rem' }}>
+                        {currentQuestion.options.map((option) => (
+                            <motion.button
+                                key={option.value}
+                                whileHover={{ scale: 1.02, backgroundColor: '#f9f9f9' }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => handleAnswer(option.value)}
+                                style={{
+                                    padding: '1.5rem',
+                                    border: '1px solid #e0e0e0',
+                                    borderRadius: '8px',
+                                    background: 'white',
+                                    fontSize: '1.1rem',
+                                    textAlign: 'left',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '1rem',
+                                    transition: 'border-color 0.2s'
+                                }}
+                            >
+                                <span style={{ fontSize: '1.5rem' }}>{option.icon}</span>
+                                {option.text}
+                            </motion.button>
+                        ))}
+                    </div>
+                </motion.div>
+            </AnimatePresence>
         </div>
     );
 }

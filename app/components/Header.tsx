@@ -23,7 +23,7 @@ export default function Header() {
                 <div className={styles.logoContainer}>
                     <Link href="/" className={styles.logo}>
                         ORA ESSENCE
-                        <span className={styles.subLogo}>PURE · CALM · TIMELESS</span>
+                        {/* <span className={styles.subLogo}>PURE · CALM · TIMELESS</span> */}
                     </Link>
                 </div>
 
@@ -31,7 +31,7 @@ export default function Header() {
                     <nav className={styles.nav} style={{ display: 'flex', gap: '1.5rem', marginRight: '1rem' }}>
                         <Link href="/products" className={styles.navLink}>Shop</Link>
                         <Link href="/rituals" className={styles.navLink}>Skincare Rituals</Link>
-                        <Link href="/about" className={styles.navLink}>About Jeff</Link>
+                        <Link href="/about" className={styles.navLink}>Our Story</Link>
                         <Link href="/quiz" className={styles.navLink}>Skin Quiz</Link>
                     </nav>
                     <Link href="/account" className={styles.iconBtn} aria-label="Account">👤</Link>

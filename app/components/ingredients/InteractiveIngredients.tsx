@@ -17,9 +17,12 @@ interface Props {
 const getIngredientImage = (name: string) => {
     const lowerName = name.toLowerCase();
     if (lowerName.includes('pomegranate')) return '/images/ingredient_pomegranate.png';
+    if (lowerName.includes('rose')) return '/images/ingredient_rose.png';
+    if (lowerName.includes('witch')) return '/images/ingredient_witch_hazel.png';
+    if (lowerName.includes('hyaluronic')) return '/images/ingredient_hyaluronic_acid.png';
+    if (lowerName.includes('aloe')) return '/images/ingredient_aloe_vera.png';
     if (lowerName.includes('clay')) return '/images/ingredient_pink_clay.png';
     if (lowerName.includes('willow')) return '/images/ingredient_willow_bark.png';
-    if (lowerName.includes('aloe')) return '/images/ingredient_aloe_vera.png';
     // Fallback for others
     if (lowerName.includes('gold')) return '/images/ingredient_pomegranate.png';
     return '/images/ingredient_pomegranate.png';

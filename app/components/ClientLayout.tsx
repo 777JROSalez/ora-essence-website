@@ -20,7 +20,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 <Header />
                 <Sidebar />
                 <CartDrawer />
-                <AnimatePresence mode="wait">
+                {/* <AnimatePresence mode="wait">
                     <motion.main
                         key={pathname}
                         initial={{ opacity: 0, y: 10 }}
@@ -28,10 +28,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.5, ease: 'easeOut' }}
                         style={{ minHeight: '80vh' }}
-                    >
-                        {children}
-                    </motion.main>
-                </AnimatePresence>
+                    > */}
+                <main style={{ minHeight: '80vh' }}>
+                    {children}
+                </main>
+                {/* </motion.main>
+                </AnimatePresence> */}
                 <Footer />
             </UIProvider>
         </CartProvider>

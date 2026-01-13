@@ -119,7 +119,7 @@ export default function CMSPage() {
                                 className={styles.statusBadge}
                                 style={{
                                     backgroundColor: '#D4AF37',
-                                    color: '#0F281E',
+                                    color: 'var(--color-text-dark)',
                                     padding: '0.8rem 2rem',
                                     fontSize: '1rem',
                                     cursor: 'pointer'

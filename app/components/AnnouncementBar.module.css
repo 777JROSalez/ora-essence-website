@@ -1,6 +1,8 @@
 .bar {
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
+    background: var(--gradient-gold);
+    color: var(--color-secondary-deep);
+    background-size: 200% auto;
+    animation: shimmer 5s infinite linear;
     height: var(--announcement-height);
     display: flex;
     align-items: center;
@@ -10,4 +12,18 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     width: 100%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

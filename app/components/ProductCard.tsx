@@ -22,6 +22,23 @@ export default function ProductCard({ product }: ProductCardProps) {
     return (
         <Link href={`/products/${product.slug}`} className={styles.card}>
             <div className={styles.imageContainer}>
+                {product.value && product.value > product.price && (
+                    <div style={{
+                        position: 'absolute',
+                        top: '10px',
+                        left: '10px',
+                        zIndex: 2,
+                        background: '#D4AF37',
+                        color: 'white',
+                        padding: '4px 8px',
+                        fontSize: '0.75rem',
+                        fontWeight: 'bold',
+                        letterSpacing: '1px',
+                        borderRadius: '2px'
+                    }}>
+                        SAVE ${product.value - product.price}
+                    </div>
+                )}
                 <Image
                     src={product.image}
                     alt={product.name}

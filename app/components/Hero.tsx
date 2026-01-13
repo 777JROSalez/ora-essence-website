@@ -7,8 +7,8 @@ export default function Hero() {
         <section className={styles.hero}>
             <div className={styles.imageWrapper}>
                 <Image
-                    src="/images/hero-radiance.png"
-                    alt="Pure Botanical Luxury"
+                    src="/images/ora_essence_hero_enhanced.png"
+                    alt="ORA ESSENCE - Luxury Botanical Skincare Collection"
                     fill
                     priority
                     style={{ objectFit: 'cover' }}
