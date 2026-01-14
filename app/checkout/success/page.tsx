@@ -1,11 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { useEffect } from 'react';
+import { useCart } from '../../context/CartContext';
 
 export default function SuccessPage() {
-    const { clearCart } = useContext(CartContext);
+    const { clearCart } = useCart();
 
     useEffect(() => {
         // Clear the cart on successful checkout

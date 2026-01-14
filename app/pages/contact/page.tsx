@@ -3,7 +3,7 @@ export default function ContactUs() {
         <main className="container" style={{ padding: '4rem 2rem', maxWidth: '800px', margin: '0 auto' }}>
             <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', marginBottom: '2rem', color: 'var(--color-primary)' }}>Contact Us</h1>
 
-            <div style={{ display: 'grid', mdGridTemplateColumns: '1fr 1fr', gap: '4rem', marginBottom: '4rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', marginBottom: '4rem' }}>
                 <div>
                     <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#fff' }}>Client Services</h2>
                     <p style={{ lineHeight: '1.8', color: '#ccc', marginBottom: '1.5rem' }}>

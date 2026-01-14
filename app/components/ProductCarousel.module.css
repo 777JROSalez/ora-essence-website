@@ -1,0 +1,126 @@
+.carouselSection {
+    padding: 5rem 2rem;
+    background: white;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+}
+
+.tab {
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+    letter-spacing: 0.05em;
+}
+
+.tab:hover {
+    color: var(--color-primary);
+}
+
+.tab.active {
+    color: var(--color-primary);
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1.1rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary);
+}
+
+.productsWrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.productsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.shopAll {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.shopAll:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .carouselSection {
+        padding: 3rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .tabs {
+        gap: 1rem;
+    }
+
+    .tab {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .carouselSection {
+        padding: 2.5rem 1rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .productsGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}

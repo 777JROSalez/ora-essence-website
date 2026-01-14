@@ -9,6 +9,9 @@ export type JournalPost = {
     title: string;
     date: string;
     image: string;
+    excerpt: string;
+    readingTime: string;
+    featured?: boolean;
     content: string; // This will be the raw MDX content
 };
 
@@ -33,7 +36,7 @@ export function getJournalPosts(): JournalPost[] {
         return {
             slug,
             content: matterResult.content,
-            ...(matterResult.data as { title: string; date: string; image: string }),
+            ...(matterResult.data as { title: string; date: string; image: string; excerpt: string; readingTime: string; featured?: boolean }),
         };
     });
 
@@ -60,6 +63,6 @@ export function getJournalPost(slug: string): JournalPost | undefined {
     return {
         slug,
         content: matterResult.content,
-        ...(matterResult.data as { title: string; date: string; image: string }),
+        ...(matterResult.data as { title: string; date: string; image: string; excerpt: string; readingTime: string; featured?: boolean }),
     };
 }

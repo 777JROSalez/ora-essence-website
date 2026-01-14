@@ -7,6 +7,7 @@ import Footer from './Footer';
 import AnnouncementBar from './AnnouncementBar';
 import Sidebar from './Sidebar';
 import CartDrawer from './CartDrawer';
+import DiscountPopup from './DiscountPopup';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
@@ -16,24 +17,26 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     return (
         <CartProvider>
             <UIProvider>
-                <AnnouncementBar />
-                <Header />
+                {/* Sticky wrapper for announcement bar + header */}
+                <div style={{
+                    position: 'sticky',
+                    top: 0,
+                    zIndex: 1000,
+                    backgroundColor: '#ffffff',
+                    overflow: 'visible'
+                }}>
+                    <AnnouncementBar />
+                    <Header />
+                </div>
+
                 <Sidebar />
                 <CartDrawer />
-                {/* <AnimatePresence mode="wait">
-                    <motion.main
-                        key={pathname}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
-                        style={{ minHeight: '80vh' }}
-                    > */}
+                <DiscountPopup />
+
                 <main style={{ minHeight: '80vh' }}>
                     {children}
                 </main>
-                {/* </motion.main>
-                </AnimatePresence> */}
+
                 <Footer />
             </UIProvider>
         </CartProvider>

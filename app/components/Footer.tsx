@@ -1,64 +1,114 @@
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
+                {/* Column 1: Shop */}
                 <div className={styles.column}>
-                    <h3>Customer Care</h3>
+                    <h3>Shop</h3>
                     <ul className={styles.linkList}>
-                        <li><a href="/pages/contact">Contact Us</a></li>
-                        <li><a href="/pages/shipping-returns">Shipping & Returns</a></li>
-                        <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+                        <li><Link href="/products">All Products</Link></li>
+                        <li><Link href="/collections/best-sellers">Best Sellers</Link></li>
+                        <li><Link href="/rituals/morning">Morning Rituals</Link></li>
+                        <li><Link href="/rituals/evening">Evening Rituals</Link></li>
+                        <li><Link href="/rituals/discovery-kits">Discovery Kits</Link></li>
+                        <li><Link href="/rituals/travel-minis">Travel Minis</Link></li>
                     </ul>
                 </div>
-                <div className={styles.column}>
-                    <h3>About Us</h3>
-                    <ul className={styles.linkList}>
-                        <li><a href="/about">Our Story</a></li>
-                        <li><a href="/rituals">Skincare Rituals</a></li>
-                        <li><a href="/journal">Journal</a></li>
-                    </ul>
-                </div>
-                <div className={styles.column}>
-                    <h3>My Account</h3>
-                    <ul className={styles.linkList}>
-                        <li><a href="/account/login">Login</a></li>
-                        <li><a href="/account/login">Register</a></li>
-                        <li><a href="/account/orders">Order History</a></li>
-                    </ul>
-                </div>
-                <div className={`${styles.column} ${styles.newsletter}`}>
-                    <h3>Join the ORA Community</h3>
-                    <p style={{ fontSize: '0.9rem', marginBottom: '1rem', color: '#e0e0e0' }}>
-                        Receive exclusive offers and skincare tips.
-                    </p>
-                    <div className={styles.inputGroup}>
-                        <input type="email" placeholder="Enter your email" className={styles.input} />
-                        <button className={styles.submit}>JOIN</button>
-                    </div>
 
-                    <div className={styles.socials} style={{ marginTop: '2rem' }}>
-                        <a href="https://instagram.com" target="_blank" style={{ marginRight: '1rem', fontSize: '1.2rem' }}>📸</a>
-                        <a href="https://tiktok.com" target="_blank" style={{ marginRight: '1rem', fontSize: '1.2rem' }}>🎵</a>
-                        <a href="https://facebook.com" target="_blank" style={{ fontSize: '1.2rem' }}>👍</a>
+                {/* Column 2: Concerns */}
+                <div className={styles.column}>
+                    <h3>Shop By Concern</h3>
+                    <ul className={styles.linkList}>
+                        <li><Link href="/concerns/dryness">Dryness</Link></li>
+                        <li><Link href="/concerns/aging">Anti-Aging</Link></li>
+                        <li><Link href="/concerns/sensitivity">Sensitivity</Link></li>
+                        <li><Link href="/concerns/blemishes">Blemishes</Link></li>
+                        <li><Link href="/concerns/uneven-skin-tone">Uneven Tone</Link></li>
+                        <li><Link href="/concerns/pores-texture">Pores & Texture</Link></li>
+                        <li><Link href="/concerns/dullness">Dullness</Link></li>
+                    </ul>
+                </div>
+
+                {/* Column 3: Company */}
+                <div className={styles.column}>
+                    <h3>Company</h3>
+                    <ul className={styles.linkList}>
+                        <li><Link href="/about">Our Story</Link></li>
+                        <li><Link href="/quiz">Skin Quiz</Link></li>
+                        <li><Link href="/rewards">Rewards Program</Link></li>
+                        <li><Link href="/subscribe">Subscribe & Save</Link></li>
+                        <li><Link href="/consultation">Book Consultation</Link></li>
+                        <li><Link href="/journal">Journal</Link></li>
+                    </ul>
+                </div>
+
+                {/* Column 4: Support + Newsletter */}
+                <div className={styles.column}>
+                    <h3>Support</h3>
+                    <ul className={styles.linkList}>
+                        <li><Link href="/pages/contact">Contact Us</Link></li>
+                        <li><Link href="/pages/shipping-returns">Shipping & Returns</Link></li>
+                        <li><Link href="/pages/privacy-policy">Privacy Policy</Link></li>
+                        <li><Link href="/account">My Account</Link></li>
+                        <li><Link href="/account/orders">Order History</Link></li>
+                    </ul>
+
+                    {/* Newsletter */}
+                    <div className={styles.newsletter}>
+                        <h4>Get 10% Off Your First Order</h4>
+                        <p>Join our community for exclusive offers and skincare tips.</p>
+                        <div className={styles.inputGroup}>
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                className={styles.input}
+                            />
+                            <button className={styles.submitButton}>Subscribe</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem 1rem 0', borderTop: '1px solid #222', marginTop: '3rem', display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '0.8rem' }}>
-                <p>&copy; 2025 ORA ESSENCE. All rights reserved.</p>
-                <div>
-                    <a href="/pages/privacy-policy" style={{ marginRight: '1rem' }}>Privacy</a>
-                    <a href="/pages/terms">Terms</a>
+
+            {/* Social Media */}
+            <div className={styles.socialSection}>
+                <h4>Follow Us</h4>
+                <div className={styles.socialLinks}>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        📸 Instagram
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        👍 Facebook
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        🎵 TikTok
+                    </a>
+                    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                        📌 Pinterest
+                    </a>
                 </div>
             </div>
-            {/* Trust Signals: Payment Methods */}
-            <div style={{ maxWidth: '1400px', margin: '1rem auto 0', padding: '0 1rem 2rem', display: 'flex', justifyContent: 'center', gap: '1rem', opacity: 0.5 }}>
-                <span title="Visa">💳 VISA</span>
-                <span title="Mastercard">💳 Mastercard</span>
-                <span title="Amex">💳 Amex</span>
-                <span title="PayPal">💳 PayPal</span>
-                <span title="Apple Pay"> Pay</span>
+
+            {/* Bottom Bar */}
+            <div className={styles.bottomBar}>
+                <p>&copy; 2025 Ora Essence. All rights reserved.</p>
+                <div className={styles.bottomLinks}>
+                    <Link href="/pages/privacy-policy">Privacy</Link>
+                    <Link href="/pages/terms">Terms</Link>
+                    <Link href="/pages/accessibility">Accessibility</Link>
+                </div>
+            </div>
+
+            {/* Payment Methods */}
+            <div className={styles.paymentMethods}>
+                <span>💳 Visa</span>
+                <span>💳 Mastercard</span>
+                <span>💳 Amex</span>
+                <span>💳 PayPal</span>
+                <span>🍎 Apple Pay</span>
+                <span>🌐 Google Pay</span>
             </div>
         </footer>
     );
