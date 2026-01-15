@@ -23,7 +23,6 @@
 
 .imageContainer img {
     object-fit: contain;
-    /* Removed mix-blend-mode which was making dark bottles invisible on dark bg */
 }
 
 .category {
@@ -48,6 +47,23 @@
     font-size: 0.9rem;
     color: var(--color-text-main);
     margin-bottom: var(--spacing-sm);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.stars {
+    color: #d4af37;
+    font-size: 0.875rem;
+}
+
+.ratingText {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
 }
 
 .btn {

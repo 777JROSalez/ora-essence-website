@@ -2,97 +2,125 @@
     max-width: var(--container-width);
     margin: 0 auto;
     padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+/* Hero Section */
+.heroSection {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
+    gap: 4rem;
     align-items: start;
+    margin-bottom: 3rem;
 }
 
-.gallery {
-    position: relative;
+.galleryWrapper {
+    position: sticky;
+    top: 100px;
 }
 
-.mainImage {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1;
-    background-color: transparent;
-    margin-bottom: var(--spacing-sm);
+.purchaseWrapper {
+    /* No special styles needed, just a wrapper */
 }
 
-.mainImage img {
-    object-fit: contain;
-    mix-blend-mode: multiply;
+/* Collapsible Sections */
+.collapsibleSections {
+    max-width: 900px;
+    margin: 0 auto 3rem;
 }
 
-.info {
+.suitedForList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.suitedForList li {
+    padding: 0.75rem 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.ingredientsImage {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ingredientsDisclaimer {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 1.5rem;
+    font-style: italic;
+}
+
+.howToVideo,
+.howToImage {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.howToSteps {
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
 }
 
-.category {
+.step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.step strong {
+    color: var(--color-primary);
     font-family: var(--font-sans);
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
+    font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: var(--spacing-xs);
 }
 
-.title {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
-}
-
-.price {
-    font-family: var(--font-sans);
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-main);
-}
-
-.description {
-    font-family: var(--font-sans);
+.step p {
+    margin: 0;
     line-height: 1.6;
     color: var(--color-text-muted);
-    margin-bottom: var(--spacing-md);
 }
 
-.actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
+.reviewsSection {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding-top: 3rem;
+    border-top: 1px solid #eee;
 }
 
-.addToBag {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 16px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-    width: 100%;
-    transition: all 0.3s;
+/* Responsive */
+@media (max-width: 1024px) {
+    .heroSection {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .galleryWrapper {
+        position: static;
+    }
 }
 
-.addToBag:hover {
-    background-color: var(--color-primary-dark);
-}
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
 
-.perks {
-    margin-top: var(--spacing-md);
-    border-top: 1px solid var(--border-color);
-    padding-top: var(--spacing-md);
-    display: flex;
-    gap: var(--spacing-md);
-}
+    .heroSection {
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
 
-.perk {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
+    .suitedForList {
+        grid-template-columns: 1fr;
+    }
 }

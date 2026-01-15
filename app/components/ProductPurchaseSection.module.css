@@ -1,0 +1,264 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Header */
+.category {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Rating */
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stars {
+    color: #d4af37;
+    font-size: 1rem;
+}
+
+.ratingText {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+/* Description */
+.description {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+/* Size Selector */
+.sizeSelector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.selectorLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sizeButtons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.sizeButton {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 4px;
+}
+
+.sizeButton:hover {
+    border-color: var(--color-primary);
+}
+
+.sizeButtonActive {
+    border-color: var(--color-primary);
+    background-color: #f9f9f9;
+}
+
+.sizeLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.sizeValue {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+/* Purchase Type */
+.purchaseType {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 1.5rem 0;
+}
+
+.purchaseOption {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border: 2px solid #eee;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.purchaseOption:hover {
+    border-color: #ccc;
+}
+
+.purchaseOption input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.optionContent {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.optionTitle {
+    font-weight: 500;
+}
+
+.optionPrice {
+    font-weight: 600;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.originalPrice {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+/* Subscription Benefits */
+.subscriptionBenefits {
+    background: #f9f9f9;
+    padding: 1.25rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.deliveryFrequency {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.frequencyLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.frequencySelect {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    background: white;
+    cursor: pointer;
+}
+
+.benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.benefits li {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+/* Add to Bag */
+.addToBag {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 1.25rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    font-size: 0.875rem;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.addToBag:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Perks */
+.perks {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.perk {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .sizeButtons {
+        flex-direction: column;
+    }
+
+    .perks {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

@@ -8,9 +8,10 @@ import { useCart } from '../context/CartContext';
 
 interface ProductCardProps {
     product: Product;
+    compact?: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, compact = false }: ProductCardProps) {
     const { addToCart } = useCart();
 
     const handleAdd = (e: React.MouseEvent) => {
@@ -48,8 +49,16 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
             <span className={styles.category}>{product.category}</span>
             <h3 className={styles.name}>{product.name}</h3>
+
+            {product.rating && product.reviewCount && (
+                <div className={styles.rating}>
+                    <span className={styles.stars}>{'★'.repeat(Math.floor(product.rating))}</span>
+                    <span className={styles.ratingText}>({product.reviewCount})</span>
+                </div>
+            )}
+
             <span className={styles.price}>${product.price}</span>
-            <button className={styles.btn} onClick={handleAdd}>Add to Bag</button>
+            {!compact && <button className={styles.btn} onClick={handleAdd}>Add to Bag</button>}
         </Link>
     );
 }
