@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+ORA_ESSENCE_Images/
+ORA_ESSENCE_Images.zip

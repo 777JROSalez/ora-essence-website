@@ -27,6 +27,12 @@
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.logoContainer a {
+    pointer-events: all;
 }
 
 .logo {
@@ -39,11 +45,13 @@
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     letter-spacing: 2px;
+    transition: font-size 0.3s ease;
 }
 
 .nav {
     display: flex;
-    gap: var(--spacing-md);
+    gap: 2rem;
+    padding-right: 1.5rem;
 }
 
 .navLink {
@@ -209,6 +217,17 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+    .logo {
+        font-size: 1.5rem;
+        letter-spacing: 1.5px;
+    }
+
+    .nav {
+        gap: 1.5rem;
+    }
+}
+
 @media (max-width: 1024px) {
     .megaMenu {
         min-width: 600px;
@@ -219,6 +238,26 @@
     }
 
     .megaMenuVisual {
+        display: none;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .nav {
+        gap: 1.2rem;
+    }
+
+    .navLink {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 900px) {
+
+    /* Hide Skin Quiz link to create more space */
+    .nav a[href="/quiz"]:last-child {
         display: none;
     }
 }

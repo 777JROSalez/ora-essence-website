@@ -10,6 +10,7 @@ import CartDrawer from './components/CartDrawer';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import CookieConsent from './components/CookieConsent';
+import AccessibilityNav from './components/AccessibilityNav';
 import ClientLayout from './components/ClientLayout'; // Refactoring to client component for framer-motion
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
+        <AccessibilityNav />
         <ClientLayout>
           {children}
         </ClientLayout>

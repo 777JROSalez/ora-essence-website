@@ -1,0 +1,123 @@
+.container {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #0B3D32 0%, #03241C 100%);
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9375rem;
+}
+
+.badgesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+}
+
+.badgeIcon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.badgeContent {
+    flex: 1;
+}
+
+.badgeName {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.25rem;
+    font-size: 0.9375rem;
+}
+
+.badgeDescription {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footerText {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* Compact variant for checkout/cart */
+.compactBadges {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(11, 61, 50, 0.05);
+    border-radius: 4px;
+}
+
+.compactBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.compactBadge .icon {
+    font-size: 1.25rem;
+}
+
+.compactBadge .text {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .badgesGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .container {
+        padding: 2rem 1.5rem;
+    }
+
+    .compactBadges {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

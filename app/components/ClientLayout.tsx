@@ -18,7 +18,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <CartProvider>
             <UIProvider>
                 {/* Sticky wrapper for announcement bar + header */}
-                <div style={{
+                <header role="banner" style={{
                     position: 'sticky',
                     top: 0,
                     zIndex: 1000,
@@ -26,18 +26,22 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                     overflow: 'visible'
                 }}>
                     <AnnouncementBar />
-                    <Header />
-                </div>
+                    <nav role="navigation" aria-label="Main navigation">
+                        <Header />
+                    </nav>
+                </header>
 
                 <Sidebar />
                 <CartDrawer />
                 <DiscountPopup />
 
-                <main style={{ minHeight: '80vh' }}>
+                <main id="main-content" role="main" tabIndex={-1} style={{ minHeight: '80vh' }}>
                     {children}
                 </main>
 
-                <Footer />
+                <footer role="contentinfo">
+                    <Footer />
+                </footer>
             </UIProvider>
         </CartProvider>
     );

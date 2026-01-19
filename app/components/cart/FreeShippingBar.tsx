@@ -2,13 +2,14 @@
 
 import { useMemo } from 'react';
 import styles from './FreeShippingBar.module.css';
+import { SHIPPING_CONFIG } from '../../config/shipping';
 
 interface FreeShippingBarProps {
     currentAmount: number;
     threshold?: number;
 }
 
-export default function FreeShippingBar({ currentAmount, threshold = 150 }: FreeShippingBarProps) {
+export default function FreeShippingBar({ currentAmount, threshold = SHIPPING_CONFIG.freeShippingThreshold }: FreeShippingBarProps) {
     const progress = Math.min((currentAmount / threshold) * 100, 100);
     const remaining = Math.max(threshold - currentAmount, 0);
 

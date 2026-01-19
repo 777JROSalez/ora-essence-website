@@ -1,0 +1,61 @@
+.skipLinks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+}
+
+.skipLink {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-primary);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 0 0 4px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: top 0.2s ease;
+    z-index: 10001;
+}
+
+.skipLink:focus {
+    top: 0;
+    outline: 3px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+.skipLink:nth-child(2) {
+    left: auto;
+    right: 0;
+    border-radius: 0 0 0 4px;
+}
+
+.keyboardHints {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 26, 26, 0.95);
+    color: var(--color-gold);
+    padding: 0.5rem 1.5rem;
+    font-size: 0.75rem;
+    border-radius: 0 0 4px 4px;
+    white-space: nowrap;
+    transition: top 0.2s ease;
+    z-index: 10000;
+}
+
+.skipLink:focus~.keyboardHints,
+.keyboardHints:focus-within {
+    top: 0;
+}
+
+@media (max-width: 768px) {
+    .keyboardHints {
+        display: none;
+    }
+}

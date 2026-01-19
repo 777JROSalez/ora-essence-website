@@ -148,3 +148,71 @@ button {
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
+
+/* WCAG 2.1 AA Accessibility Styles */
+*:focus {
+  outline: none;
+  /* Remove default, we'll use :focus-visible */
+}
+
+*:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* High contrast focus for interactive elements */
+.btn-primary:focus-visible,
+.btn-outline:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 1px var(--color-secondary), 0 6px 20px rgba(212, 196, 143, 0.5);
+}
+
+/* Ensure main content is focusable for skip links */
+main {
+  outline: none;
+}
+
+main:focus {
+  outline: 2px dashed var(--color-gold);
+  outline-offset: -4px;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip when focused */
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Ensure sufficient color contrast (WCAG AA: 4.5:1 for normal text) */
+/* Gold on dark backgrounds passes - verified */
+/* Dark text on white backgrounds passes - verified */

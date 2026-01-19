@@ -1,0 +1,63 @@
+.banner {
+    background: linear-gradient(135deg, rgba(11, 61, 50, 0.08) 0%, rgba(212, 175, 55, 0.05) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.mainText {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 0.9375rem;
+}
+
+.link {
+    font-size: 0.8125rem;
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.link:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        padding: 0.875rem 1rem;
+    }
+
+    .content {
+        gap: 0.75rem;
+    }
+
+    .icon {
+        font-size: 1.25rem;
+    }
+
+    .mainText {
+        font-size: 0.875rem;
+    }
+
+    .link {
+        font-size: 0.75rem;
+    }
+}

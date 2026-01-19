@@ -1,0 +1,88 @@
+.section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 245, 0.9) 100%);
+    text-align: center;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.5px;
+}
+
+.badgeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.badgeGrid.compact {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 500px;
+}
+
+.badgeItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.badgeItem:hover {
+    transform: translateY(-5px);
+}
+
+.badgeWrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badgeItem:hover .badgeWrapper {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.badgeImage {
+    object-fit: contain;
+}
+
+.badgeName {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 1.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .badgeGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .badgeGrid.compact {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+}

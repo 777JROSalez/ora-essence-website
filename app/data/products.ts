@@ -26,6 +26,7 @@ export interface Product {
     ingredientsImage?: string;
     value?: number; // The original value of the items in the bundle
     bestSeller?: boolean;
+    benefitLabel?: string; // Marketing label like "The Glow-Getter"
     // New Tata Harper-style fields
     sizes?: ProductSize[]; // Different size options
     rating?: number; // Average rating (out of 5)
@@ -45,6 +46,7 @@ export const products: Product[] = [
         name: 'Regenerating Cleanser',
         price: 88,
         description: 'Our daily exfoliating treatment that polishes and buffs to reveal healthy-looking, radiant skin. 100% natural and non-toxic.',
+        benefitLabel: 'The Gentle Reset',
         image: '/images/regenerating_cleanser.png',
         images: [
             '/images/regenerating_cleanser.png',
@@ -221,6 +223,7 @@ export const products: Product[] = [
         name: 'Midnight Recovery Oil',
         price: 110,
         description: 'A potent overnight treatment rich in omega fatty acids and antioxidants to repair and regenerate skin while you sleep.',
+        benefitLabel: 'The Dream Worker',
         image: '/images/midnight_recovery_oil.png',
         images: [
             '/images/midnight_recovery_oil.png',
@@ -269,6 +272,7 @@ export const products: Product[] = [
         name: 'Diamond Dust Exfoliator',
         price: 92,
         description: 'A physical exfoliant infused with micronized diamond powder to gently polish away dead skin cells for unparalleled smoothness.',
+        benefitLabel: 'The Polish Master',
         image: '/images/diamond_dust_exfoliator_white.png',
         images: [
             '/images/diamond_dust_exfoliator_white.png',
@@ -360,6 +364,7 @@ export const products: Product[] = [
         name: 'Renewal Face Oil',
         price: 95,
         description: 'A lightweight, fast-absorbing oil that delivers instant hydration and a dewy glow. Packed with antioxidants to protect against environmental stressors.',
+        benefitLabel: 'The Glow-Getter',
         image: '/images/renewal_face_oil.png',
         images: [
             '/images/renewal_face_oil.png',
@@ -551,6 +556,7 @@ export const products: Product[] = [
         name: 'Advanced Repair Serum',
         price: 125,
         description: 'A concentrated anti-aging serum that targets fine lines and loss of elasticity. Powered by bioactive peptides and rare botanical extracts.',
+        benefitLabel: 'The Youth Restorer',
         image: '/images/advanced_repair_serum.png',
         images: [
             '/images/advanced_repair_serum.png',
@@ -598,6 +604,7 @@ export const products: Product[] = [
         name: 'Vitality Barrier Cream',
         price: 75,
         description: 'A restorative daily moisturizer that strengthens the skin barrier and locks in hydration. Leaves skin soft, plump, and resilient.',
+        benefitLabel: 'The Fortifier',
         image: '/images/vitality_barrier_cream.png',
         images: [
             '/images/vitality_barrier_cream.png',

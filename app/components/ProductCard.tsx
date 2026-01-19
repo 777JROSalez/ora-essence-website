@@ -48,6 +48,9 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
                 />
             </div>
             <span className={styles.category}>{product.category}</span>
+            {product.benefitLabel && (
+                <div className={styles.benefitLabel}>{product.benefitLabel}</div>
+            )}
             <h3 className={styles.name}>{product.name}</h3>
 
             {product.rating && product.reviewCount && (

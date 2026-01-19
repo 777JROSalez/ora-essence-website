@@ -148,7 +148,8 @@
 .label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #888;
+    color: #ccc;
+    font-weight: 500;
 }
 
 .input,

@@ -8,13 +8,14 @@ import CartAnnouncement from './cart/CartAnnouncement';
 import FreeShippingBar from './cart/FreeShippingBar';
 import ShippingProtection from './cart/ShippingProtection';
 import CartUpsell from './cart/CartUpsell';
+import { SHIPPING_CONFIG, calculateShippingCost } from '../config/shipping';
 
 export default function CartDrawer() {
     const { isCartOpen, closeCart, items, removeFromCart, updateQuantity, cartTotal } = useCart();
-    // Import components here (will need to actually import them at the top of file or use dynamic imports if I could, but I'll assume imports are handled by context or I'll add them)
-    // Wait, I need to add imports to the top of the file too. I'll do this in a separate chunk or just rewrite the file content if easier. 
-    // I'll stick to Replace but I need to handle imports.
-    // Actually, I can replace the whole functional component content and the imports.
+
+    // Calculate shipping cost (standard shipping for cart drawer)
+    const shippingCost = calculateShippingCost(cartTotal, 'standard');
+    const orderTotal = cartTotal + shippingCost;
 
     return (
         <>
@@ -83,7 +84,15 @@ export default function CartDrawer() {
                             <span>Subtotal</span>
                             <span>${cartTotal.toFixed(2)}</span>
                         </div>
-                        <Link href="/checkout" onClick={closeCart} className="btn-primary" style={{ width: '100%', display: 'block', textAlign: 'center', textDecoration: 'none' }}>
+                        <div className={styles.total}>
+                            <span>Shipping</span>
+                            <span>{shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}</span>
+                        </div>
+                        <div className={styles.total} style={{ fontWeight: 'bold', fontSize: '1.1rem', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid #e0e0e0' }}>
+                            <span>Total</span>
+                            <span>${orderTotal.toFixed(2)}</span>
+                        </div>
+                        <Link href="/checkout" onClick={closeCart} className="btn-primary" style={{ width: '100%', display: 'block', textAlign: 'center', textDecoration: 'none', marginTop: '1rem' }}>
                             Checkout
                         </Link>
                         <div style={{ textAlign: 'center', marginTop: '0.5rem', fontSize: '1.2rem' }}>

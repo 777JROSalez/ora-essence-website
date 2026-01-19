@@ -45,6 +45,20 @@ export default function Footer() {
                     </ul>
                 </div>
 
+                {/* Column 3: Legal */}
+                <div className={styles.column}>
+                    <h3>Legal</h3>
+                    <ul className={styles.linkList}>
+                        <li><Link href="/pages/terms-of-service">Terms of Service</Link></li>
+                        <li><Link href="/pages/privacy-policy">Privacy Policy</Link></li>
+                        <li><Link href="/pages/cookie-policy">Cookie Policy</Link></li>
+                        <li><Link href="/pages/security-policy">Security Policy</Link></li>
+                        <li><Link href="/pages/returns">Returns & Exchanges</Link></li>
+                        <li><Link href="/pages/shipping-returns">Shipping Info</Link></li>
+                        <li><Link href="/pages/accessibility">Accessibility</Link></li>
+                    </ul>
+                </div>
+
                 {/* Column 4: Support + Newsletter */}
                 <div className={styles.column}>
                     <h3>Support</h3>
@@ -91,24 +105,31 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* Bottom Bar */}
-            <div className={styles.bottomBar}>
-                <p>&copy; 2025 Ora Essence. All rights reserved.</p>
-                <div className={styles.bottomLinks}>
-                    <Link href="/pages/privacy-policy">Privacy</Link>
-                    <Link href="/pages/terms">Terms</Link>
-                    <Link href="/pages/accessibility">Accessibility</Link>
+            {/* Footer Bottom */}
+            <div className={styles.footerBottom}>
+                <div className={styles.bottomLeft}>
+                    <p>&copy; {new Date().getFullYear()} ORA ESSENCE. All rights reserved.</p>
+                    <div className={styles.legalLinks}>
+                        <Link href="/pages/privacy-policy">Privacy</Link>
+                        <Link href="/pages/terms-of-service">Terms</Link>
+                        <Link href="/pages/returns">Returns</Link>
+                    </div>
+                </div>
+                <div className={styles.securityBadges}>
+                    <span className={styles.securityItem}>🔒 SSL Secured</span>
+                    <span className={styles.securityItem}>✓ PCI Compliant</span>
+                    <span className={styles.securityItem}>🛡️ We Don't Sell Your Data</span>
                 </div>
             </div>
 
             {/* Payment Methods */}
             <div className={styles.paymentMethods}>
-                <span>💳 Visa</span>
-                <span>💳 Mastercard</span>
-                <span>💳 Amex</span>
-                <span>💳 PayPal</span>
-                <span>🍎 Apple Pay</span>
-                <span>🌐 Google Pay</span>
+                <span>We Accept:</span>
+                <span className={styles.paymentIcon}>💳 Visa</span>
+                <span className={styles.paymentIcon}>💳 Mastercard</span>
+                <span className={styles.paymentIcon}>💳 American Express</span>
+                <span className={styles.paymentIcon}>💵 PayPal</span>
+                <span className={styles.paymentIcon}>🔒 Stripe</span>
             </div>
         </footer>
     );

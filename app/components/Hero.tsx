@@ -16,9 +16,10 @@ export default function Hero() {
             </div>
 
             <div className={styles.content}>
-                <h1 className={styles.title}>Pure · Calm · Timeless</h1>
+                <div className={styles.urgencyBadge}>Limited Time Only</div>
+                <h1 className={styles.title}>Winter Beauty Event</h1>
                 <p className={styles.subtitle}>
-                    Experience the healing power of nature with our new botanical collection.
+                    Save 20% on all products. Discover nature's most powerful ingredients for radiant, healthy skin.
                 </p>
                 <Link href="/products" className={styles.cta}>Shop The Collection</Link>
             </div>

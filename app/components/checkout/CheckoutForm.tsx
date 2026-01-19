@@ -3,15 +3,23 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '../../context/CartContext';
+import EasyReturns from '../EasyReturns';
+import DataEncryptionBanner from '../DataEncryptionBanner';
 import styles from './CheckoutForm.module.css';
+import { calculateShippingCost, ShippingMethod } from '../../config/shipping';
 
 export default function CheckoutForm() {
     const [step, setStep] = useState(1); // 1: Info, 2: Shipping, 3: Payment
     const [loading, setLoading] = useState(false);
+    const [shippingMethod, setShippingMethod] = useState<ShippingMethod>('standard');
     const router = useRouter();
     const { items: cart, cartTotal } = useCart();
 
     const [ccNumber, setCcNumber] = useState('');
+
+    // Calculate shipping cost based on selected method
+    const shippingCost = calculateShippingCost(cartTotal, shippingMethod);
+    const orderTotal = cartTotal + shippingCost;
 
     const formatCardNumber = (value: string) => {
         const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
@@ -62,6 +70,10 @@ export default function CheckoutForm() {
                 <div className={`${styles.step} ${step >= 3 ? styles.active : ''}`}>Payment</div>
             </div>
 
+            {/* Trust Components */}
+            <EasyReturns />
+            {step === 3 && <DataEncryptionBanner />}
+
             <div className={styles.content}>
                 <div className={styles.mainContent}>
                     <form onSubmit={handleSubmit} className={styles.form}>
@@ -90,17 +102,27 @@ export default function CheckoutForm() {
                                 <h2>Shipping Method</h2>
                                 <div className={styles.radioGroup}>
                                     <label className={styles.radioOption}>
-                                        <input type="radio" name="shipping" defaultChecked />
+                                        <input
+                                            type="radio"
+                                            name="shipping"
+                                            checked={shippingMethod === 'standard'}
+                                            onChange={() => setShippingMethod('standard')}
+                                        />
                                         <div className={styles.radioDetails}>
                                             <span>Standard Shipping (3-5 business days)</span>
-                                            <span>Free</span>
+                                            <span>{cartTotal >= 50 ? 'Free' : '$8.99'}</span>
                                         </div>
                                     </label>
                                     <label className={styles.radioOption}>
-                                        <input type="radio" name="shipping" />
+                                        <input
+                                            type="radio"
+                                            name="shipping"
+                                            checked={shippingMethod === 'expedited'}
+                                            onChange={() => setShippingMethod('expedited')}
+                                        />
                                         <div className={styles.radioDetails}>
                                             <span>Expedited Shipping (2 business days)</span>
-                                            <span>$15.00</span>
+                                            <span>$50.00</span>
                                         </div>
                                     </label>
                                 </div>
@@ -114,7 +136,7 @@ export default function CheckoutForm() {
                                     <span>🔒</span>
                                     <span>SSL Encrypted & Secure Connection</span>
                                 </div>
-                                <p className={styles.secureText}>All transactions are backed by our <strong>30-Day Money-Back Guarantee</strong>.</p>
+                                <p className={styles.secureText}>All transactions are backed by our <strong>90-Day Money-Back Guarantee</strong>.</p>
                                 <div className={styles.paymentBox}>
                                     <div className={styles.creditCardInput}>
                                         <input
@@ -192,11 +214,11 @@ export default function CheckoutForm() {
                             </div>
                             <div className={styles.totalRow}>
                                 <span>Shipping</span>
-                                <span>Free</span>
+                                <span>{shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}</span>
                             </div>
                             <div className={`${styles.totalRow} ${styles.finalTotal}`}>
                                 <span>Total</span>
-                                <span>${cartTotal.toFixed(2)}</span>
+                                <span>${orderTotal.toFixed(2)}</span>
                             </div>
                         </div>
                     </div>

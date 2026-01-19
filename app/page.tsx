@@ -1,8 +1,14 @@
 import Hero from './components/Hero';
+import ShopByConcern from './components/ShopByConcern';
+import FounderStory from './components/FounderStory';
 import FeaturedSection from './components/FeaturedSection';
+import AsSeenIn from './components/AsSeenIn';
+import TrustBadges from './components/TrustBadges';
 import ProductCarousel from './components/ProductCarousel';
+import ClinicalProof from './components/ClinicalProof';
 import SecondaryHero from './components/SecondaryHero';
 import ServiceGrid from './components/ServiceGrid';
+import GuaranteeBar from './components/GuaranteeBar';
 import { products } from './data/products';
 
 export default function Home() {
@@ -11,8 +17,14 @@ export default function Home() {
 
     return (
         <main>
-            {/* Primary Hero Section */}
+            {/* Primary Hero Section with Urgency Messaging */}
             <Hero />
+
+            {/* Shop By Concern - Low-Friction Self-Segmentation */}
+            <ShopByConcern />
+
+            {/* Founder Story - Trust Building & Personal Guarantee */}
+            <FounderStory />
 
             {/* Featured Product Section - Split layout */}
             <FeaturedSection
@@ -24,11 +36,20 @@ export default function Home() {
                 products={featuredProducts}
             />
 
+            {/* Third-Party Validation - As Featured In */}
+            <AsSeenIn />
+
+            {/* Certification Trust Badges */}
+            <TrustBadges />
+
             {/* Product Carousel with Category Tabs */}
             <ProductCarousel
                 title="Routine Favorites"
                 categories={['Best Sellers', 'Cleansers', 'Serums', 'Moisturizers']}
             />
+
+            {/* Clinical Proof - Quantifiable Efficacy */}
+            <ClinicalProof />
 
             {/* Secondary Hero / Campaign Section */}
             <SecondaryHero
@@ -43,6 +64,9 @@ export default function Home() {
 
             {/* Service Features Grid */}
             <ServiceGrid />
+
+            {/* Sticky Guarantee Bar - Risk Reversal */}
+            <GuaranteeBar />
         </main>
     );
 }

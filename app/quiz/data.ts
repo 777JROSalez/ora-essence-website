@@ -42,42 +42,54 @@ export const questions: Question[] = [
     }
 ];
 
-// Simple logic to recommend a routine based on answers
+// Enhanced logic to recommend a personalized routine based on answers
 // Returns an array of Product slugs
 export const getRecommendation = (answers: Record<number, string>): string[] => {
     const skinType = answers[1];
     const concern = answers[2];
     const texture = answers[3];
 
-    let routine = ['regenerating-cleanser', 'revitalizing-toner']; // Base routine
+    let routine: string[] = [];
 
-    // Serum Recommendation
-    if (concern === 'aging' || skinType === 'dry') {
-        routine.push('advanced-repair-serum');
-    } else if (concern === 'dullness') {
-        routine.push('renewal-face-oil'); // Vitamin C oil
+    // Step 1: Cleanser Selection
+    if (concern === 'acne' || skinType === 'oily') {
+        routine.push('purifying-cleanser'); // For acne-prone or oily skin
     } else {
-        routine.push('advanced-repair-serum'); // Default high-end serum
+        routine.push('regenerating-cleanser'); // For all other skin types
     }
 
-    // Moisturizer Recommendation
+    // Step 2: Toner (universal step)
+    routine.push('revitalizing-toner');
+
+    // Step 3: Serum Selection
+    if (concern === 'dullness') {
+        routine.push('renewal-face-oil'); // Vitamin C oil for brightening
+    } else if (concern === 'aging' || skinType === 'dry') {
+        routine.push('advanced-repair-serum'); // Anti-aging peptides
+    } else if (concern === 'sensitivity') {
+        // For sensitive skin, use a gentler option
+        routine.push('renewal-face-oil'); // Lightweight oil is gentler
+    } else {
+        // For normal or combination skin with acne concern
+        routine.push('advanced-repair-serum'); // Default high-performance serum
+    }
+
+    // Step 4: Moisturizer Selection
     if (texture === 'oil') {
-        routine.push('midnight-recovery-oil');
-    } else if (texture === 'rich' || skinType === 'dry') {
-        routine.push('vitality-barrier-cream');
+        routine.push('midnight-recovery-oil'); // User prefers facial oil texture
+    } else if (skinType === 'dry' || concern === 'sensitivity') {
+        routine.push('vitality-barrier-cream'); // Rich barrier support
+    } else if (texture === 'gel' || skinType === 'oily' || skinType === 'combination') {
+        // For those preferring lightweight textures or oily/combo skin
+        routine.push('vitality-barrier-cream'); // Still use barrier cream but could add lighter option in future
     } else {
-        routine.push('vitality-barrier-cream'); // Default for now
+        routine.push('vitality-barrier-cream'); // Default moisturizer
     }
 
-    // Add specific treatments
-    if (concern === 'acne') {
-        routine.unshift('purifying-cleanser'); // Replace or add cleansing step
-        // Remove generating cleanser if purifying is added? Let's just swap for simplicity in this logic
-        routine = routine.filter(s => s !== 'regenerating-cleanser');
-    } else if (concern === 'dullness') {
-        // Maybe add exfoliator
-        routine.push('diamond-dust-exfoliator');
+    // Step 5: Add Targeted Treatments
+    if (concern === 'dullness') {
+        routine.push('diamond-dust-exfoliator'); // Physical exfoliant for brightness
     }
 
-    return Array.from(new Set(routine)); // Dedup
+    return Array.from(new Set(routine)); // Remove duplicates
 };
