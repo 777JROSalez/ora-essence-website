@@ -28,6 +28,7 @@ export default function SecondaryHero({
                     src={imageSrc}
                     alt={imageAlt}
                     fill
+                    sizes="100vw"
                     style={{ objectFit: 'cover' }}
                 />
                 <div className={styles.overlay} />

@@ -1,17 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { UIProvider } from './context/UIContext';
-import { CartProvider } from './context/CartContext';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import AnnouncementBar from './components/AnnouncementBar';
-import Sidebar from './components/Sidebar';
-import CartDrawer from './components/CartDrawer';
-
-import { motion, AnimatePresence } from 'framer-motion';
 import CookieConsent from './components/CookieConsent';
 import AccessibilityNav from './components/AccessibilityNav';
-import ClientLayout from './components/ClientLayout'; // Refactoring to client component for framer-motion
+import ClientLayout from './components/ClientLayout';
 
 export const metadata: Metadata = {
   title: 'ORA ESSENCE | Pure Botanical Luxury',

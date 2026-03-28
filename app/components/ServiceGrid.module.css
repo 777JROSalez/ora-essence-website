@@ -14,6 +14,8 @@
 .serviceItem {
     background: white;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -40,6 +42,9 @@
 .content {
     padding: 2rem 1.5rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .title {
@@ -60,6 +65,7 @@
 
 .link {
     display: inline-block;
+    margin-top: auto;
     color: var(--color-primary);
     text-decoration: none;
     font-weight: 500;

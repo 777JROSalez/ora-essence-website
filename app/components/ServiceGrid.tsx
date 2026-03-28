@@ -52,6 +52,7 @@ export default function ServiceGrid() {
                                 src={service.image}
                                 alt={service.imageAlt}
                                 fill
+                                sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                 style={{ objectFit: 'cover' }}
                             />
                         </div>

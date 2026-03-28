@@ -11,6 +11,7 @@ export default function Hero() {
                     alt="ORA ESSENCE - Luxury Botanical Skincare Collection"
                     fill
                     priority
+                    sizes="100vw"
                     style={{ objectFit: 'cover' }}
                 />
             </div>

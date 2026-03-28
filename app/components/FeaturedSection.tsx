@@ -35,6 +35,7 @@ export default function FeaturedSection({
                 src={imageSrc}
                 alt={imageAlt}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ objectFit: 'cover' }}
             />
         </div>

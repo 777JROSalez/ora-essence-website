@@ -29,9 +29,6 @@ export default function CartDrawer() {
                     <button onClick={closeCart} className={styles.closeBtn}>&times;</button>
                 </div>
 
-                <CartAnnouncement />
-                <FreeShippingBar currentAmount={cartTotal} />
-
                 <div className={styles.body}>
                     {items.length === 0 ? (
                         <div className={styles.emptyState}>
@@ -46,6 +43,9 @@ export default function CartDrawer() {
                         </div>
                     ) : (
                         <>
+                            <CartAnnouncement />
+                            <FreeShippingBar currentAmount={cartTotal} />
+
                             <div className={styles.items}>
                                 {items.map((item) => (
                                     <div key={item.id} className={styles.item}>

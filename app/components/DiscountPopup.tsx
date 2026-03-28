@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './DiscountPopup.module.css';
 
 export default function DiscountPopup() {
@@ -68,20 +69,13 @@ export default function DiscountPopup() {
                         <div className={styles.content}>
                             <div className={styles.imageSection}>
                                 <div className={styles.imagePlaceholder}>
-                                    {/* Placeholder for lifestyle image - replace with actual image */}
-                                    <div style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        background: 'linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%)',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        color: 'white',
-                                        fontSize: '1.5rem',
-                                        fontFamily: 'var(--font-serif)'
-                                    }}>
-                                        ORA ESSENCE
-                                    </div>
+                                    <Image
+                                        src="/images/lip_blush_kit.png"
+                                        alt="ORA ESSENCE - Luxury Botanical Skincare"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 300px"
+                                        style={{ objectFit: 'cover' }}
+                                    />
                                 </div>
                             </div>
 

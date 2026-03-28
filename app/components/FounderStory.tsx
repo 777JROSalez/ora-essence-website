@@ -12,6 +12,7 @@ export default function FounderStory() {
                             src="/images/founder_portrait.png"
                             alt="Sophia - Founder of Ora Essence"
                             fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             style={{ objectFit: 'cover' }}
                             className={styles.founderImage}
                         />

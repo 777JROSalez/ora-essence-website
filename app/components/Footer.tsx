@@ -10,7 +10,7 @@ export default function Footer() {
                     <h3>Shop</h3>
                     <ul className={styles.linkList}>
                         <li><Link href="/products">All Products</Link></li>
-                        <li><Link href="/collections/best-sellers">Best Sellers</Link></li>
+                        <li><Link href="/products/best-sellers">Best Sellers</Link></li>
                         <li><Link href="/rituals/morning">Morning Rituals</Link></li>
                         <li><Link href="/rituals/evening">Evening Rituals</Link></li>
                         <li><Link href="/rituals/discovery-kits">Discovery Kits</Link></li>

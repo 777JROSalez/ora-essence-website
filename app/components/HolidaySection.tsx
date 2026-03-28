@@ -16,6 +16,7 @@ export default function HolidaySection() {
                         src="/images/holiday-set.png"
                         alt="Holiday Lip & Blush Kit"
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         style={{ objectFit: 'contain' }}
                     />
                 </div>
